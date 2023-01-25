@@ -22,7 +22,7 @@
         Please enter a username to search for.
       </p>
     </div>
-    <form action="#" class="mt-6 flex">
+    <form action="#" class="mt-6 flex items-center">
       <app-input-field
         id="username"
         name="username"
@@ -30,7 +30,7 @@
         label="Username"
         placeholder="octocat"
         [required]="true"
-        class="w-full"
+        class="w-full border-0 p-0"
         [(value)]="username"
         type="search"
       ></app-input-field>
@@ -43,7 +43,11 @@
   </div>
   <div class="mt-10 w-full">
     <ul role="list" class="w-full">
-      <app-user-card></app-user-card>
+      <app-user-card
+        src="https://avatars.githubusercontent.com/u/583231?v=4"
+        name="The Octocat"
+        username="octocat"
+      ></app-user-card>
     </ul>
   </div>
 </div>

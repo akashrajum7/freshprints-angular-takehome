@@ -4,13 +4,13 @@
   <div class="flex flex-1 flex-col p-8">
     <img
       class="mx-auto h-32 w-32 flex-shrink-0 rounded-full"
-      src="https://avatars.githubusercontent.com/u/583231?v=4"
-      alt=""
+      [src]="src"
+      alt="profile photo"
     />
-    <h3 class="mt-6 text-sm font-medium text-gray-900">The Octocat</h3>
+    <h3 class="mt-6 text-sm font-medium text-gray-900">{{ name }}</h3>
     <dl class="mt-1 flex flex-grow flex-col justify-between">
       <dt class="sr-only">Username</dt>
-      <dd class="text-sm text-gray-500">@octocat</dd>
+      <dd class="text-sm text-gray-500">@{{ username }}</dd>
     </dl>
   </div>
 </li>
