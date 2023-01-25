@@ -22,7 +22,11 @@
         Please enter a username to search for.
       </p>
     </div>
-    <form action="#" class="mt-6 flex items-center">
+    <form
+      action="#"
+      [formGroup]="usernameSearchForm"
+      class="mt-6 flex items-start"
+    >
       <app-input-field
         id="username"
         name="username"
@@ -33,16 +37,20 @@
         class="w-full border-0 p-0"
         [(value)]="username"
         type="search"
+        [control]="usernameSearchForm.controls.username"
+        [error]="usernameInvalid ? 'Username is invalid' : null"
       ></app-input-field>
       <app-primary-button
-        [disabled]="loading"
+        [disabled]="loading || usernameInvalid"
         label="Search"
         type="submit"
+        class="mt-1"
       ></app-primary-button>
     </form>
   </div>
   <div class="mt-10 w-full">
     <ul role="list" class="w-full">
+      <h3 class="text-sm font-medium text-gray-500 mb-4">Search results</h3>
       <app-user-card
         src="https://avatars.githubusercontent.com/u/583231?v=4"
         name="The Octocat"

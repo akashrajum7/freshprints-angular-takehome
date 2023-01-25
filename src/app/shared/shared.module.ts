@@ -4,6 +4,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { InputFieldComponent } from './input-field/input-field.component';
 import { PrimaryButtonComponent } from './primary-button/primary-button.component';
 import { UserCardComponent } from './user-card/user-card.component';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,7 @@ import { UserCardComponent } from './user-card/user-card.component';
     PrimaryButtonComponent,
     UserCardComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule],
   exports: [
     NavBarComponent,
     InputFieldComponent,

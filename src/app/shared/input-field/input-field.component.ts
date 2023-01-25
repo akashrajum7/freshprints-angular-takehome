@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-input-field',
@@ -22,6 +23,10 @@ export class InputFieldComponent {
   required: boolean = false;
   @Input()
   disabled: boolean = false;
+  @Input()
+  control!: FormControl;
+  @Input()
+  error: string | null = null;
 
   @Output() valueChange = new EventEmitter<string>();
 }

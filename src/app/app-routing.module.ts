@@ -7,6 +7,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomeModule),
   },
+  {
+    path: 'history',
+    loadChildren: () =>
+      import('./pages/history/history.module').then((m) => m.HistoryModule),
+  },
 ];
 
 @NgModule({
