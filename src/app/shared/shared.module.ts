@@ -6,6 +6,7 @@ import { PrimaryButtonComponent } from './primary-button/primary-button.componen
 import { UserCardComponent } from './user-card/user-card.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EmptyCardComponent } from './empty-card/empty-card.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     InputFieldComponent,
     PrimaryButtonComponent,
     UserCardComponent,
+    EmptyCardComponent,
   ],
   imports: [CommonModule, RouterModule, ReactiveFormsModule],
   exports: [
@@ -20,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     InputFieldComponent,
     PrimaryButtonComponent,
     UserCardComponent,
+    EmptyCardComponent,
   ],
 })
 export class SharedModule {}

@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -29,4 +36,12 @@ export class InputFieldComponent {
   error: string | null = null;
 
   @Output() valueChange = new EventEmitter<string>();
+
+  @ViewChild('input') input!: ElementRef<HTMLInputElement>;
+
+  constructor() {}
+
+  focus(): void {
+    this.input.nativeElement.focus();
+  }
 }
