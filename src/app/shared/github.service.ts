@@ -22,4 +22,8 @@ export class GithubService {
     searchHistory.unshift(searchResults);
     localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
   }
+
+  clearSearchHistory() {
+    localStorage.removeItem('searchHistory');
+  }
 }

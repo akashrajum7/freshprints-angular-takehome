@@ -26,14 +26,19 @@ export class HistoryComponent {
 
     return {
       totalSearches: this.searchHistory.length,
-      avgFoundPercent: (
-        (avgFoundCount / this.searchHistory.length) *
-        100
-      ).toFixed(2),
-      avgNotFoundPercent: (
-        (avgNotFoundCount / this.searchHistory.length) *
-        100
-      ).toFixed(2),
+      avgFoundPercent:
+        this.searchHistory.length > 0
+          ? ((avgFoundCount / this.searchHistory.length) * 100).toFixed(2)
+          : '0.00',
+      avgNotFoundPercent:
+        this.searchHistory.length > 0
+          ? ((avgNotFoundCount / this.searchHistory.length) * 100).toFixed(2)
+          : '0.00',
     };
+  }
+
+  clearHistory(event: Event): void {
+    event.preventDefault();
+    this.github.clearSearchHistory();
   }
 }
