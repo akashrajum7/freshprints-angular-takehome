@@ -60,6 +60,9 @@
             },
             "development": {
               "browserTarget": "freshprints-angular-takehome:build:development"
+            },
+            "options": {
+              "disableHostCheck": true
             }
           },
           "defaultConfiguration": "development"
