@@ -1,1 +1,112 @@
-<p>history works!</p>
+<div class="px-4 sm:px-6 lg:px-8">
+  <div class="sm:flex sm:items-center">
+    <div class="sm:flex-auto">
+      <h1 class="text-xl font-semibold text-gray-900">Search History</h1>
+      <p class="mt-2 text-sm text-gray-700">
+        A list of all the previous searches you have made.
+      </p>
+    </div>
+    <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+      <button
+        type="button"
+        [routerLink]="['/']"
+        class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
+      >
+        Search Again
+      </button>
+    </div>
+  </div>
+  <div class="mt-8">
+    <h3 class="text-lg font-medium leading-6 text-gray-900">Statistics</h3>
+    <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
+      <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+        <dt class="truncate text-sm font-medium text-gray-500">
+          Total Searches
+        </dt>
+        <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">
+          {{ statistics.totalSearches }}
+        </dd>
+      </div>
+
+      <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+        <dt class="truncate text-sm font-medium text-gray-500">
+          Avg. Results Found
+        </dt>
+        <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">
+          {{ statistics.avgFoundPercent }}%
+        </dd>
+      </div>
+
+      <div class="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
+        <dt class="truncate text-sm font-medium text-gray-500">
+          Avg. Results Not Found
+        </dt>
+        <dd class="mt-1 text-3xl font-semibold tracking-tight text-gray-900">
+          {{ statistics.avgNotFoundPercent }}%
+        </dd>
+      </div>
+    </dl>
+  </div>
+  <div class="mt-8 flex flex-col">
+    <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+        <div
+          class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg"
+        >
+          <table class="min-w-full divide-y divide-gray-300">
+            <thead class="bg-gray-50">
+              <tr>
+                <th
+                  scope="col"
+                  class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                >
+                  Search Term
+                </th>
+                <th
+                  scope="col"
+                  class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                >
+                  Results
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 bg-white">
+              <tr *ngFor="let history of searchHistory">
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                  <div class="text-gray-900">{{ history.searchString }}</div>
+                  <div class="text-gray-500">{{ history.date }}</div>
+                </td>
+                <td
+                  *ngIf="history.user"
+                  class="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6"
+                >
+                  <div class="flex items-center">
+                    <div class="h-10 w-10 flex-shrink-0">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        [src]="history.user.avatar_url"
+                        alt=""
+                      />
+                    </div>
+                    <div class="ml-4">
+                      <div class="font-medium text-gray-900">
+                        {{ history.user.name }}}
+                      </div>
+                      <div class="text-gray-500">@{{ history.user.login }}</div>
+                    </div>
+                  </div>
+                </td>
+                <td
+                  *ngIf="!history.user"
+                  class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                >
+                  No search results found.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

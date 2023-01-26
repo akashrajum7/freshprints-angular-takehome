@@ -41,4 +41,5 @@ export interface UserError {
 export interface SearchResults {
   searchString: string;
   user: User | null;
+  date: string;
 }

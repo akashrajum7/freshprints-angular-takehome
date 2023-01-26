@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { GithubService } from 'src/app/shared/github.service';
 import { InputFieldComponent } from 'src/app/shared/input-field/input-field.component';
@@ -10,7 +10,7 @@ import { SearchResults, User, UserError } from './types';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit {
   loading: boolean = false;
   hasSearched: boolean = false;
   searchResults: SearchResults | null = null;
@@ -18,6 +18,10 @@ export class HomeComponent {
   @ViewChild('usernameInput') usernameInput!: InputFieldComponent;
 
   constructor(private github: GithubService) {}
+
+  ngAfterViewInit(): void {
+    this.usernameInput.focus();
+  }
 
   usernameSearchForm = new FormGroup({
     username: new FormControl({ value: '', disabled: false }, [
@@ -28,8 +32,7 @@ export class HomeComponent {
 
   get usernameInvalid(): boolean {
     return (
-      (this.usernameSearchForm.controls.username.touched ||
-        this.usernameSearchForm.controls.username.dirty) &&
+      this.usernameSearchForm.controls.username.dirty &&
       this.usernameSearchForm.controls.username.invalid
     );
   }
@@ -80,6 +83,7 @@ export class HomeComponent {
           this.searchResults = {
             searchString: this.usernameSearchForm.controls.username.value ?? '',
             user: user,
+            date: new Date().toString(),
           };
         },
         error: (error: HttpErrorResponse) => {
@@ -89,6 +93,7 @@ export class HomeComponent {
           this.searchResults = {
             searchString: this.usernameSearchForm.controls.username.value ?? '',
             user: null,
+            date: new Date().toString(),
           };
         },
       })
