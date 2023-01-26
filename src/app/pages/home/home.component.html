@@ -31,12 +31,10 @@
         #usernameInput
         id="username"
         name="username"
-        [disabled]="loading"
         label="Username"
         placeholder="octocat"
         [required]="true"
         class="w-full border-0 p-0"
-        [(value)]="username"
         type="search"
         [control]="usernameSearchForm.controls.username"
         [error]="usernameInvalid ? 'Username is invalid' : null"
@@ -55,9 +53,9 @@
       <h3 class="text-sm font-medium text-gray-500 mb-4">Search results</h3>
       <app-user-card
         *ngIf="hasSearched && !loading && !hasNoResult"
-        src="https://avatars.githubusercontent.com/u/583231?v=4"
-        name="The Octocat"
-        username="octocat"
+        [src]="getUserAvatar"
+        [name]="getUserFullName"
+        [username]="getUserUsername"
       ></app-user-card>
       <app-empty-card
         *ngIf="!hasSearched || loading || hasNoResult"

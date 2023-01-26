@@ -7,6 +7,7 @@ import { UserCardComponent } from './user-card/user-card.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EmptyCardComponent } from './empty-card/empty-card.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { EmptyCardComponent } from './empty-card/empty-card.component';
     UserCardComponent,
     EmptyCardComponent,
   ],
-  imports: [CommonModule, RouterModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule, HttpClientModule],
   exports: [
     NavBarComponent,
     InputFieldComponent,

@@ -29,8 +29,6 @@ export class InputFieldComponent {
   @Input()
   required: boolean = false;
   @Input()
-  disabled: boolean = false;
-  @Input()
   control!: FormControl;
   @Input()
   error: string | null = null;
